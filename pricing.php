@@ -117,128 +117,74 @@
       </div>
     </header>
     <div class="container">
-      <div class="tab-content pricing-tab-content" id="pills-tabContent">
-        <div class="tab-pane show active" id="monthly-plans" role="tabpanel" aria-labelledby="monthly-plans-tab">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card pricing-card text-center shadow border-0">
-                <div class="card-header">
-                  <h5 class="pricing-plan-title">Basic</h5>
-                  <h3 class="pricing-plan-cost">$29.00/Month</h3>
-                </div>
-                <div class="card-body">
-                  <ul class="pricing-plan-features">
-                    <li>Annual Plan fee</li>
-                    <li>Monthly plan fee</li>
-                    <li>Seat Minimum</li>
-                    <li>Phone support</li>
-                    <li>Group messaging</li>
-                    <li>Chat</li>
-                  </ul>
-                  <a href="#!" class="btn btn-success pricing-plan-purchase-btn">Choose Plan</a>
-                </div>
-              </div>
+        <?php
+        $sql = "SELECT * FROM merohostel_pricing";
+$result = mysqli_query($conn, $sql);
+   while($row = mysqli_fetch_assoc($result)){
+    echo'<div class="tab-content pricing-tab-content" id="pills-tabContent">
+    <div class="tab-pane show active" id="monthly-plans" role="tabpanel" aria-labelledby="monthly-plans-tab">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card pricing-card text-center shadow border-0">
+            <div class="card-header">
+              <h5 class="pricing-plan-title">One Sitter</h5>
+              <h3 class="pricing-plan-cost">'.$row['onesitterprice'].'/Month</h3>
             </div>
-            <div class="col-md-4">
-              <div class="card pricing-card text-center shadow border-0">
-                <div class="card-header">
-                  <h5 class="pricing-plan-title">Business</h5>
-                  <h3 class="pricing-plan-cost">$49.00/Month</h3>
-                </div>
-                <div class="card-body">
-                  <ul class="pricing-plan-features">
-                    <li>Annual Plan fee</li>
-                    <li>Monthly plan fee</li>
-                    <li>Seat Minimum</li>
-                    <li>Phone support</li>
-                    <li>Group messaging</li>
-                    <li>Chat</li>
-                  </ul>
-                  <a href="#!" class="btn btn-success pricing-plan-purchase-btn">Choose Plan</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card pricing-card text-center shadow border-0">
-                <div class="card-header">
-                  <h5 class="pricing-plan-title">Enterprise</h5>
-                  <h3 class="pricing-plan-cost">$99.00/Month</h3>
-                </div>
-                <div class="card-body">
-                  <ul class="pricing-plan-features">
-                    <li>Annual Plan fee</li>
-                    <li>Monthly plan fee</li>
-                    <li>Seat Minimum</li>
-                    <li>Phone support</li>
-                    <li>Group messaging</li>
-                    <li>Chat</li>
-                  </ul>
-                  <a href="#!" class="btn btn-success pricing-plan-purchase-btn">Choose Plan</a>
-                </div>
-              </div>
+            <div class="card-body">
+              <ul class="pricing-plan-features">
+                <li>Annual Plan fee</li>
+                <li>Monthly plan fee</li>
+                <li>Seat Minimum</li>
+                <li>Phone support</li>
+                <li>Group messaging</li>
+                <li>Chat</li>
+              </ul>
+              <a href="#!" class="btn btn-success pricing-plan-purchase-btn">Choose Plan</a>
             </div>
           </div>
         </div>
-        <div class="tab-pane" id="annual-plans" role="tabpanel" aria-labelledby="annual-plans-tab">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card pricing-card text-center shadow border-0">
-                <div class="card-header">
-                  <h5 class="pricing-plan-title">Basic</h5>
-                  <h3 class="pricing-plan-cost">$290.00/Year</h3>
-                </div>
-                <div class="card-body">
-                  <ul class="pricing-plan-features">
-                    <li>Annual Plan fee</li>
-                    <li>Monthly plan fee</li>
-                    <li>Seat Minimum</li>
-                    <li>Phone support</li>
-                    <li>Group messaging</li>
-                    <li>Chat</li>
-                  </ul>
-                  <a href="#!" class="btn btn-success pricing-plan-purchase-btn">Choose Plan</a>
-                </div>
-              </div>
+        <div class="col-md-4">
+          <div class="card pricing-card text-center shadow border-0">
+            <div class="card-header">
+              <h5 class="pricing-plan-title">Two Sitter</h5>
+              <h3 class="pricing-plan-cost">'.$row['twositterprice'].'/Month</h3>
             </div>
-            <div class="col-md-4">
-              <div class="card pricing-card text-center shadow border-0">
-                <div class="card-header">
-                  <h5 class="pricing-plan-title">Business</h5>
-                  <h3 class="pricing-plan-cost">$490.00/Year</h3>
-                </div>
-                <div class="card-body">
-                  <ul class="pricing-plan-features">
-                    <li>Annual Plan fee</li>
-                    <li>Monthly plan fee</li>
-                    <li>Seat Minimum</li>
-                    <li>Phone support</li>
-                    <li>Group messaging</li>
-                    <li>Chat</li>
-                  </ul>
-                  <a href="#!" class="btn btn-success pricing-plan-purchase-btn">Choose Plan</a>
-                </div>
-              </div>
+            <div class="card-body">
+              <ul class="pricing-plan-features">
+                <li>Annual Plan fee</li>
+                <li>Monthly plan fee</li>
+                <li>Seat Minimum</li>
+                <li>Phone support</li>
+                <li>Group messaging</li>
+                <li>Chat</li>
+              </ul>
+              <a href="#!" class="btn btn-success pricing-plan-purchase-btn">Choose Plan</a>
             </div>
-            <div class="col-md-4">
-              <div class="card pricing-card text-center shadow border-0">
-                <div class="card-header">
-                  <h5 class="pricing-plan-title">Enterprise</h5>
-                  <h3 class="pricing-plan-cost">$990.00/Year</h3>
-                </div>
-                <div class="card-body">
-                  <ul class="pricing-plan-features">
-                    <li>Annual Plan fee</li>
-                    <li>Monthly plan fee</li>
-                    <li>Seat Minimum</li>
-                    <li>Phone support</li>
-                    <li>Group messaging</li>
-                    <li>Chat</li>
-                  </ul>
-                  <a href="#!" class="btn btn-success pricing-plan-purchase-btn">Choose Plan</a>
-                </div>
-              </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card pricing-card text-center shadow border-0">
+            <div class="card-header">
+              <h5 class="pricing-plan-title">Three Sitter</h5>
+              <h3 class="pricing-plan-cost">'.$row['threesitterprice'].'/Month</h3>
+            </div>
+            <div class="card-body">
+              <ul class="pricing-plan-features">
+                <li>Annual Plan fee</li>
+                <li>Monthly plan fee</li>
+                <li>Seat Minimum</li>
+                <li>Phone support</li>
+                <li>Group messaging</li>
+                <li>Chat</li>
+              </ul>
+              <a href="#!" class="btn btn-success pricing-plan-purchase-btn">Choose Plan</a>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>';
+   }
+   ?>
+      
     </div>

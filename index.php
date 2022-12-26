@@ -14,5 +14,9 @@
     <?php require("body.php");?>
     <?php require("services.php");?>
     <?php require("pricing.php");?>
+    <?php require("gallery.php");?>
+    <?php require("aboutus.php");?>
+    <?php require("mapwithcontactus.php");?>
+    <?php require("footer.php");?>
 </body>
 </html>
