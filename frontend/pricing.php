@@ -132,12 +132,12 @@ $result = mysqli_query($conn, $sql);
             </div>
             <div class="card-body">
               <ul class="pricing-plan-features">
-                <li>Annual Plan fee</li>
-                <li>Monthly plan fee</li>
-                <li>Seat Minimum</li>
-                <li>Phone support</li>
-                <li>Group messaging</li>
-                <li>Chat</li>
+                <li>Bed</li>
+                <li>Cupboard</li>
+                <li>Study Table</li>
+                <li>Internet</li>
+                <li>Chair</li>
+                <li>Other Necessary things required</li>
               </ul>
               <a href="#!" class="btn btn-success pricing-plan-purchase-btn">Choose Plan</a>
             </div>
@@ -151,12 +151,12 @@ $result = mysqli_query($conn, $sql);
             </div>
             <div class="card-body">
               <ul class="pricing-plan-features">
-                <li>Annual Plan fee</li>
-                <li>Monthly plan fee</li>
-                <li>Seat Minimum</li>
-                <li>Phone support</li>
-                <li>Group messaging</li>
-                <li>Chat</li>
+              <li>Bed</li>
+              <li>Cupboard</li>
+              <li>Study Table</li>
+              <li>Internet</li>
+              <li>Chair</li>
+              <li>Other Necessary things required</li>
               </ul>
               <a href="#!" class="btn btn-success pricing-plan-purchase-btn">Choose Plan</a>
             </div>
@@ -170,12 +170,12 @@ $result = mysqli_query($conn, $sql);
             </div>
             <div class="card-body">
               <ul class="pricing-plan-features">
-                <li>Annual Plan fee</li>
-                <li>Monthly plan fee</li>
-                <li>Seat Minimum</li>
-                <li>Phone support</li>
-                <li>Group messaging</li>
-                <li>Chat</li>
+              <li>Bed</li>
+              <li>Cupboard</li>
+              <li>Study Table</li>
+              <li>Internet</li>
+              <li>Chair</li>
+              <li>Other Necessary things required</li>
               </ul>
               <a href="#!" class="btn btn-success pricing-plan-purchase-btn">Choose Plan</a>
             </div>

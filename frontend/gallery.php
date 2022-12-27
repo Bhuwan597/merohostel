@@ -330,18 +330,23 @@
  
 </style>
 <body>
+  <div class="container">
+    <h1 class="jumbotron-heading text-center m-2">Hostel Gallery</h1>
+  </div>
         <div class="wrapper">
           <main class="main ">
             <div class="slide">
             <div class="portfolio">
               <section class="portfolio_items">
-                <figure class="portfolio_item" >
-                  <img style="border-end-end-radius: 50px;border-bottom-left-radius: 50px;"  src="https://cdn.pixabay.com/photo/2022/02/15/18/04/woman-7015406__340.jpg" alt="" />	
-                </figure>
-                <figure class="portfolio_item">
-                  <img style="border-end-end-radius: 50px;border-bottom-left-radius: 50px;"   src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Hostel_Dormitory.jpg" alt="" />	
-                </figure>
-        
+                <?php
+                $sql = "SELECT * FROM merohostel_gallery";
+        $result = mysqli_query($conn, $sql);
+           while($row = mysqli_fetch_assoc($result)){
+            echo' <figure class="portfolio_item" >
+            <img style="border-end-end-radius: 50px;border-bottom-left-radius: 50px;"  src="'.$row['mainimagelink'].'" alt="" />	
+          </figure>';
+           }
+           ?>
               </section>
             </div>
           </div>
@@ -351,60 +356,15 @@
         <footer class="footer" style="overflow-x:hidden;">
             <div class="bd-best">
                 <div class="bd-best-list">
-                  <figure class="bd-best-item" >
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2019/10/09/06/06/gift-4536515__340.png" alt="">
-                  </figure>
-                  <figure class="bd-best-item">
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2019/12/22/01/14/snowman-4711637__340.png" alt="">
-                  </figure>
-                  <figure class="bd-best-item">
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2019/11/13/12/35/drink-4623554__340.png" alt="">
-                  </figure>
-                  <figure class="bd-best-item">
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2017/11/03/18/27/wintry-2915190__340.png" alt="">
-                  </figure>
-                  <figure class="bd-best-item">
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2017/11/03/18/27/wintry-2915190__340.png" alt="">
-                  </figure>
-                  <figure class="bd-best-item">
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2019/11/13/12/54/ball-4623653__340.png" alt="">
-                  </figure>
-                  <figure class="bd-best-item">
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2019/03/02/21/07/birds-4030704__340.png" alt="">
-                  </figure>
-                  <figure class="bd-best-item" >
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2019/10/09/06/06/gift-4536515__340.png" alt="">
-                  </figure>
-                  <figure class="bd-best-item">
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2019/12/22/01/14/snowman-4711637__340.png" alt="">
-                  </figure>
-                  <figure class="bd-best-item">
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2019/11/13/12/35/drink-4623554__340.png" alt="">
-                  </figure>
-                  <figure class="bd-best-item">
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2017/11/03/18/27/wintry-2915190__340.png" alt="">
-                  </figure>
-                  <figure class="bd-best-item">
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2017/11/03/18/27/wintry-2915190__340.png" alt="">
-                  </figure>
-                  <figure class="bd-best-item">
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2019/11/13/12/54/ball-4623653__340.png" alt="">
-                  </figure>
-                  <figure class="bd-best-item">
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2019/03/02/21/07/birds-4030704__340.png" alt="">
-                  </figure>
-                  <figure class="bd-best-item" >
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2019/10/09/06/06/gift-4536515__340.png" alt="">
-                  </figure>
-                  <figure class="bd-best-item">
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2019/12/22/01/14/snowman-4711637__340.png" alt="">
-                  </figure>
-                  <figure class="bd-best-item">
-                    <img class="kl_img" src="https://cdn.pixabay.com/photo/2019/11/13/12/35/drink-4623554__340.png" alt="">
-                  </figure>
-                 
-                 
-                           
+                <?php
+                $sql = "SELECT * FROM merohostel_gallery";
+        $result = mysqli_query($conn, $sql);
+           while($row = mysqli_fetch_assoc($result)){
+            echo ' <figure class="bd-best-item" >
+            <img style="width:300px ; height:200px" class="kl_img" src="'.$row['subimagelink'].'" alt="">
+          </figure>';
+           }
+           ?>            
                 </div>
            </div>
         </footer>

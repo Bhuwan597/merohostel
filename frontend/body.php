@@ -1,4 +1,3 @@
-<?php require("./backend/dbconfig.php"); ?>
 <style>
 .container {
     margin-top: 100px;

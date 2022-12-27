@@ -102,25 +102,31 @@ border-color: #f9a826;
 
           <ul class="list-unstyled">
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>When your pet is missing</a>
+              <a href="#!" class="text-white"><i class="fa-solid fa-link pe-3"></i>Home</a>
             </li>
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Recently found</a>
+              <a href="#!" class="text-white"><i class="fa-solid fa-link pe-3"></i>About</a>
             </li>
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>How to adopt?</a>
+              <a href="#!" class="text-white"><i class="fa-solid fa-link pe-3"></i>Blogs</a>
             </li>
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Pets for adoption</a>
+              <a href="#!" class="text-white"><i class="fa-solid fa-link pe-3"></i>Admission</a>
             </li>
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Material gifts</a>
+              <a href="#!" class="text-white"><i class="fa-solid fa-link pe-3"></i>Testimonials</a>
             </li>
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Help with walks</a>
+              <a href="#!" class="text-white"><i class="fa-solid fa-link pe-3"></i>Gallery</a>
             </li>
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Volunteer activities</a>
+              <a href="#!" class="text-white"><i class="fa-solid fa-link pe-3"></i>Location</a>
+            </li>
+            <li class="mb-2">
+              <a href="#!" class="text-white"><i class="fa-solid fa-link pe-3"></i>Pricing</a>
+            </li>
+            <li class="mb-2">
+              <a href="#!" class="text-white"><i class="fa-solid fa-link pe-3"></i>Services</a>
             </li>
           </ul>
         </div>
@@ -128,26 +134,13 @@ border-color: #f9a826;
 
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-4">Animals</h5>
+          <h5 class="text-uppercase mb-4">Actions</h5>
 
           <ul class="list-unstyled">
-            <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>General information</a>
-            </li>
-            <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>About the shelter</a>
-            </li>
-            <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Statistic data</a>
-            </li>
-            <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Job</a>
-            </li>
-            <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Tenders</a>
-            </li>
-            <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Contact</a>
+           <button class="btn btn-outline-info me-2">Login</button>
+           <button class="btn btn-outline-warning me-2">Register</button>
+           <li>
+             <button class="btn btn-outline-primary m-2">Send Us a Message</button>
             </li>
           </ul>
         </div>
@@ -159,13 +152,13 @@ border-color: #f9a826;
 
           <ul class="list-unstyled">
             <li>
-              <p><i class="fas fa-map-marker-alt pe-2"></i>Warsaw, 57 Street, Poland</p>
+              <p><i class="fas fa-map-marker-alt pe-2"></i>Buddhanagar, New Baneshwor, Kathmandu</p>
             </li>
             <li>
-              <p><i class="fas fa-phone pe-2"></i>+ 01 234 567 89</p>
+              <p><i class="fas fa-phone pe-2"></i>+977 98XXXXXXXX</p>
             </li>
             <li>
-              <p><i class="fas fa-envelope pe-2 mb-0"></i>contact@example.com</p>
+              <p><i class="fas fa-envelope pe-2 mb-0"></i>mero@hostel.com</p>
             </li>
           </ul>
         </div>
@@ -174,10 +167,10 @@ border-color: #f9a826;
       <!--Grid row-->
     </div>
     <!-- Grid container -->
-    <div class="row d-flex justify-content-center align-items-center rows">
+    <div class="row d-flex justify-content-center align-items-center rows ">
 
         <div class="col-md-10">
-            <div class="card">
+            <div class="card bg-transparent border-0">
     
     
                 <div class="text-center">
@@ -204,7 +197,7 @@ border-color: #f9a826;
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
       © 2020 Copyright:
-      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+      <a class="text-white" href="#">Mero Hostel</a>
     </div>
     <!-- Copyright -->
   </footer>

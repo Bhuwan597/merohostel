@@ -1,5 +1,5 @@
 <?php require("_links.php");?>
-<?php require("./backend/dbconfig.php"); ?>
+<?php require("../backend/dbconfig.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mero Hoste-Boys Residency</title>
 </head>
-<style></style>
+<style>
+    body{
+        overflow-x: hidden;
+    }
+</style>
 <body>
     <?php require("navbar.php");?>
     <?php require("body.php");?>

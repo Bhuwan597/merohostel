@@ -7,6 +7,15 @@
 .flex2 { flex:2 }
 .flex3 { flex:3 }
  
+a.siteLink {
+  margin-left:-5px;
+  border:none;
+  padding:24px;
+  display:inline-block;
+  min-width:115px;
+  cursor: pointer;
+  text-decoration: none;
+}
 button.siteLink {
   margin-left:-5px;
   border:none;
@@ -85,7 +94,7 @@ select.noStyle {
   outline:none
 } 
 </style>
-<?php require("_links.php");?>
+<a?php require("_links.php");?>
 <div class="p-3 bg-dark text-white">
   <div class="flexMain">
     <div class="flex1">
@@ -107,8 +116,8 @@ select.noStyle {
         <div class="flex3 text-center" id="siteBrand">Mero Hostel
         </div> 
         <div class="flex2 text-end d-none d-md-block">
-          <button class="whiteLink siteLink">REGISTER</button>
-          <button class="blackLink siteLink">Login</button>
+          <a class="whiteLink siteLink">REGISTER</a>
+          <a class="blackLink siteLink">Login</a>
         </div>
       </div>
    </div>
@@ -129,6 +138,10 @@ $result = mysqli_query($conn, $sql);
     echo'<a href="'.$row['link'].'" class="nav-menu-item"><i class="'.$row['icon'].'"></i>'.$row['menu'].'</a>';  
    }
   ?>
+  <div class="flex2 text-end d-none d-md-block p-4">
+    <a class="whiteLink siteLink">REGISTER</a>
+    <a class="blackLink siteLink">Login</a>
+  </div>
  </div>
   </div>
 <script>

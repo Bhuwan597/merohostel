@@ -3,7 +3,6 @@
       <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
 
           <?php
-    require("./backend/dbconfig.php");
 $sql = "SELECT * FROM merohostel_services";
 $result = mysqli_query($conn, $sql);
    while($row = mysqli_fetch_assoc($result)){
