@@ -62,21 +62,21 @@ $result = mysqli_query($conn, $sql);
 
         <div class="four col-md-3">
             <div class="counter-box colored">
-                <i class="fa fa-thumbs-o-up"></i>
+                <i class="fa fa-thumbs-up"></i>
                 <span class="counter">'.$row['happystudents'].'</span>
                 <p>Happy Students</p>
             </div>
         </div>
         <div class="four col-md-3">
             <div class="counter-box">
-                <i class="fa fa-group"></i>
+                <i class="fa-solid fa-people-group"></i>
                 <span class="counter">'.$row['registeredmembers'].'</span>
                 <p>Registered Members</p>
             </div>
         </div>
         <div class="four col-md-3">
             <div class="counter-box">
-                <i class="fa  fa-shopping-cart"></i>
+                <i class="fa-solid  fa-house-user"></i>
                 <span class="counter">'.$row['availablehostelstudents'].'</span>
                 <p>Available Hostel Students</p>
             </div>

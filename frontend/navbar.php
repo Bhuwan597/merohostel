@@ -111,7 +111,7 @@ select.noStyle {
     <div role="navigation" class="sticky-top border-bottom border-top" id="mainNavigation">
       <div class="flexMain">
         <div class="flex2">
-          <button class="whiteLink siteLink" style="border-right:1px solid #eaeaea" onclick="menuToggle()"><i class="fas fa-bars me-2"></i> MENU</button>
+          <button class="whiteLink siteLink" style="border-right:1px solid #eaeaea" onclick="menuToggle()"><i class="fa-solid fa-bars me-2"></i> MENU</button>
         </div>
         <div class="flex3 text-center" id="siteBrand">Mero Hostel
         </div> 
@@ -126,7 +126,7 @@ select.noStyle {
             <div class="row">
                <h3>Mero Hostel</h3>
               <div class="col text-end ">
-                <i class="fas fa-times" role="btn" onclick="menuToggle()"></i>
+                <i style="cursor:pointer;" class="fa-solid fa-xmark" role="btn" onclick="menuToggle()"></i>
               </div>
             </div>
           </div>
