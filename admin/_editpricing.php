@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['adminlogin'])){
+    header("location: adminlogin.php");
+    exit();
+}
+?>
 <?php require("../backend/dbconfig.php");
 if(isset($_POST['onesitterprice']) && isset($_POST['twositterprice']) && isset($_POST['threesitterprice'])){
     $onesitterprice = mysqli_real_escape_string($conn,$_POST['onesitterprice']);

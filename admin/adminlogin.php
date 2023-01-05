@@ -117,7 +117,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text] {
+input[type=email] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -138,12 +138,40 @@ input[type=text] {
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text]:focus {
+input[type=password] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+input[type=email]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+input[type=password]:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
 
-input[type=text]:placeholder {
+input[type=email]:placeholder {
+  color: #cccccc;
+}
+input[type=password]:placeholder {
   color: #cccccc;
 }
 
@@ -276,14 +304,46 @@ input[type=text]:placeholder {
 
     <!-- Icon -->
     <div class="fadeIn first">
-     <i style="font-size: 50px" class="bi bi-person-lock"></i>
+     <i style="font-size: 100px" class="bi bi-person-lock"></i>
     </div>
 
     <!-- Login Form -->
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+    <form id="adminlogin">
+      <input type="email" id="email" class="fadeIn second" name="email" placeholder="Email" required autocomplete="off">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" required autocomplete="off">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
   </div>
 </div>
+<script>
+  $("#adminlogin").submit(function(e){
+    e.preventDefault();
+    let email = $("#email").val();
+    let password = $("#password").val();
+   $.ajax({
+    url:"_adminlogin.php",
+    method:"POST",
+    data:{email:email,password:password},
+    success:function(data){
+      if(data =="1"){
+            swal({
+  title: "Success!",
+  text: "Admin Login Successfull.",
+  icon: "success",
+  button: "Okay",
+}).then(()=>{
+        window.location.assign("/merohostel/admin/index.php");
+    });
+        }else{
+          $("#adminlogin").trigger("reset");
+            swal({
+  title: "Error!",
+  text: data,
+  icon: "error",
+  button: "Okay",
+});
+        }
+    }
+   })
+  })
+</script>

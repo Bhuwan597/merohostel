@@ -1,4 +1,11 @@
 <?php
+session_start();
+if(!isset($_SESSION['adminlogin'])){
+    header("location: adminlogin.php");
+    exit();
+}
+?>
+<?php
 require("../backend/dbconfig.php");
 if(isset($_POST['servicetitle']) && isset($_POST['servicedescription']) && isset($_POST['serviceicon']) && isset($_POST['servicebuttonvalue']) && isset($_POST['servicebuttoncolor'])){
     $servicetitle = mysqli_real_escape_string($conn,$_POST['servicetitle']);

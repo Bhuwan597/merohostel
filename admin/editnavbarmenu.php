@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['adminlogin'])){
+    header("location: adminlogin.php");
+    exit();
+}
+?>
 <?php require("../backend/dbconfig.php"); ?>
 <?php require("adminnavbar.php");?>
 <div class="container-fluid rounded p-4">

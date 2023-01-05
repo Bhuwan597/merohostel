@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['adminlogin'])){
+    header("location: adminlogin.php");
+    exit();
+}
+?>
 <?php require("../backend/dbconfig.php");
 if(isset($_POST['happystudents']) && isset($_POST['registeredmembers']) && isset($_POST['availablehostelstudents']) && isset($_POST['admissions'])){
     $happystudents = mysqli_real_escape_string($conn,$_POST['happystudents']);

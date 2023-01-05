@@ -7,9 +7,9 @@ if(!isset($_SESSION['adminlogin'])){
 ?>
 <?php
 require("../backend/dbconfig.php");
-if( isset($_POST['menu'])){
-    $menu = mysqli_real_escape_string($conn,$_POST['menu']);
-    $sql = "DELETE FROM `merohostel_navbar` WHERE `merohostel_navbar`.`menu` = '$menu';";
+if( isset($_POST['mainimagelink'])){
+    $mainimagelink = mysqli_real_escape_string($conn,$_POST['mainimagelink']);
+    $sql = "DELETE FROM `merohostel_gallery` WHERE `merohostel_gallery`.`mainimagelink` = '$mainimagelink';";
     if(mysqli_query($conn,$sql) == "1"){
     echo true;
     }else{
@@ -17,5 +17,6 @@ if( isset($_POST['menu'])){
     }
 }else{
     echo false;
+    exit();
 }
 ?>
