@@ -12,6 +12,7 @@ if(isset($_POST['onesitterprice']) && isset($_POST['twositterprice']) && isset($
 
 }else{
     echo false;
+    exit();
 }
 
 

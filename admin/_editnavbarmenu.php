@@ -12,5 +12,6 @@ if( isset($_POST['menu'])&& isset($_POST['icon']) && isset($_POST['link'])){
     }
 }else{
     echo false;
+    exit();
 }
 ?>

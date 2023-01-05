@@ -18,9 +18,9 @@
    Frontend Management
   </a>
   <a href="editnavbarmenu.php" class="list-group-item">Navbar Menu</a>
-  <a href="#" class="list-group-item">Pricing</a>
-  <a href="#" class="list-group-item">Records</a>
-  <a href="#" class="list-group-item">Services</a>
+  <a href="editpricing.php" class="list-group-item">Pricing</a>
+  <a href="editrecords.php" class="list-group-item">Records</a>
+  <a href="editservices.php" class="list-group-item">Services</a>
   <a href="#" class="list-group-item">Gallery</a>
   <a href="#" class="list-group-item">Team</a>
 </div>
