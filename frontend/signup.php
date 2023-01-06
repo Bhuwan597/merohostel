@@ -1,6 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
     crossorigin="anonymous"></script>
@@ -18,40 +19,40 @@
                         <div class="d-flex justify-content-center align-center" id="imagePreview"></div>
                         <div class="form-outline mb-4">
                             <label class="form-label" for="name">Full Name<span class="text-danger ,e-2">*</span></label>
-                            <input type="text" id="name" class="form-control form-control-lg" required autocomplete="off"/>
+                            <input name="name" type="text" id="name" class="form-control form-control-lg" required autocomplete="off"/>
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label" for="email">Email<span class="text-danger ,e-2">*</span></label>
-                            <input oninput="checkemail(this.value)" type="email" id="email" class="form-control form-control-lg" required autocomplete="off"/>
+                            <input name="email" oninput="checkemail(this.value)" type="email" id="email" class="form-control form-control-lg" required autocomplete="off"/>
                             <label id="emailvalidation"></label>
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label" for="phone">Phone<span class="text-danger ,e-2">*</span></label>
-                            <input oninput="checknumber(this.value)" type="number" id="phone" class="form-control form-control-lg" required autocomplete="off"/>
+                            <input name="phone" oninput="checknumber(this.value)" type="number" id="phone" class="form-control form-control-lg" required autocomplete="off"/>
                             <label id="phonevalidation"></label>
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label" for="dateofbirth">Date of Birth<span class="text-danger ,e-2">*</span></label>
-                            <input type="date" id="dateofbirth" class="form-control form-control-lg" required autocomplete="off"/>
+                            <input name="dateofbirth" type="date" id="dateofbirth" class="form-control form-control-lg" required autocomplete="off"/>
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label" for="address">Address<span class="text-danger ,e-2">*</span></label>
-                            <input type="text" id="address" class="form-control form-control-lg" required autocomplete="off"/>
+                            <input name="address" type="text" id="address" class="form-control form-control-lg" required autocomplete="off"/>
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label" for="password">Password<span class="text-danger ,e-2">*</span></label>
-                            <input type="password" id="password" class="form-control form-control-lg" required autocomplete="off"  oninput="checkpassword(document.getElementById('password').value, document.getElementById('cpassword').value)" />
+                            <input name="password" type="password" id="password" class="form-control form-control-lg" required autocomplete="off"  oninput="checkpassword(document.getElementById('password').value, document.getElementById('cpassword').value)" />
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label" for="cpassword">Confirm Password<span class="text-danger ,e-2">*</span></label>
-                            <input type="password" id="cpassword" oninput="checkpassword(document.getElementById('password').value, document.getElementById('cpassword').value)" class="form-control form-control-lg" required autocomplete="off"/>
+                            <input name="cpassword" type="password" id="cpassword" oninput="checkpassword(document.getElementById('password').value, document.getElementById('cpassword').value)" class="form-control form-control-lg" required autocomplete="off"/>
                             <label id="passwordvalidation"></label>
                         </div>
                         <label class="form-label" for="profilephoto">Profile Photo<span class="text-danger ,e-2">*</span></label>
                         <div class="input-group mb-3">
 
                             <input onchange="return checkAndFilterFiles()" type="file" class="form-control"
-                                id="profilephoto"required autocomplete="off">
+                                id="profilephoto" name="profilephoto" required autocomplete="off">
                             <label class="text-warning my-1" id="photovalidation">Please upload the photo having
                                 extensions .png .gif .jpeg .jpg of atmost 1mb.</label>
                         </div>
@@ -159,7 +160,33 @@
        document.getElementById("cpassword").value="";
     });
     }else{
-        alert("valid");
+      $.ajax({
+        url: "../backend/_signup.php",
+        method: "POST",
+        processData:false,
+        contentType: false,
+        data:new FormData(this),
+        success: function (data){
+            if(data =="1"){
+            swal({
+  title: "Success!",
+  text: "Check your email to verify your account.",
+  icon: "success",
+  button: "Okay",
+}).then(()=>{
+        window.location.assign("/merohostel/frontend/index.php");
+    });
+        }else{
+            swal({
+  title: "Error!",
+  text: data,
+  icon: "error",
+  button: "Okay",
+});
+        }
+        }
+
+      })
     }
     })
 </script>
