@@ -57,7 +57,9 @@
                                 extensions .png .gif .jpeg .jpg of atmost 1mb.</label>
                         </div>
                         <hr class="my-2">
-                        <button id="signupsubmit" class="btn btn-primary btn-lg btn-block" type="submit">Sign Up</button>
+                        <button id="signupsubmit" class="btn btn-primary btn-lg btn-block" type="submit"><div id="spinner" class="spinner-grow spinner-grow-sm mx-4 d-none" role="status">
+                            <span class="visually-hidden"></span>
+                          </div>Sign Up</button>
                         <hr class="my-2">
                         <div class="container text-center">Already have an account <a href="#">Login</a></div>
                     </form>
@@ -141,6 +143,8 @@
 <script>
     $("#signupform").submit(function(e){
         e.preventDefault();
+        $("#spinner").removeClass("d-none");
+        document.getElementById("signupsubmit").setAttribute("disabled",true);
     let name = $("#name").val();
     let email = $("#email").val();
     let phone = $("#phone").val();
@@ -158,6 +162,8 @@
 }).then(()=>{
        document.getElementById("password").value="";
        document.getElementById("cpassword").value="";
+       $("#spinner").addClass("d-none");
+        document.getElementById("signupsubmit").removeAttribute("disabled");
     });
     }else{
       $.ajax({
@@ -167,6 +173,8 @@
         contentType: false,
         data:new FormData(this),
         success: function (data){
+            $("#spinner").addClass("d-none");
+        document.getElementById("signupsubmit").removeAttribute("disabled");
             if(data =="1"){
             swal({
   title: "Success!",

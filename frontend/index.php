@@ -1,4 +1,4 @@
-<?php require("_links.php");?>
+<?php require("_links.php"); session_start();?>
 <?php require("../backend/dbconfig.php"); ?>
 <!DOCTYPE html>
 <html lang="en">

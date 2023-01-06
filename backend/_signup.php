@@ -24,42 +24,40 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['phone']) && 
             echo "User Already Exists.";
 
         } else {
-            $sql = "INSERT INTO `merohostel_users` ( `name`, `email`, `phone`, `dateofbirth`, `address`, `password`, `profilephoto`, `status`, `token` ) VALUES ( '$name', '$email', '$phone', '$dateofbirth', '$address', '$hashpassword', '$profilephoto', 'inactive', '$token');";
-            if ($conn->query($sql) === TRUE) {
-                move_uploaded_file($sourcePath, $targetPath);
-                
-                require 'PHPMailer/PHPMailerAutoload.php';
+                            
+            require 'PHPMailer/PHPMailerAutoload.php';
     
-                $mail = new PHPMailer();
-                                           // Enable verbose debug output   
-                $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-                $mail->IsSMTP();
-                $mail->SMTPAuth = true;                               // Enable SMTP authentication
-                $mail->Username = 'baupea1481@gmail.com';                 // SMTP username
-                $mail->Password = 'qtgmaovompetxofh';                           // SMTP password
-                $mail->SMTPSecure = 'tls';                          
-                $mail->Port = 587;                                    // TCP port to connect to
-                $mail->SetFrom("baupea1481@gmail.com", "Mero Hostel");
-                $mail->addAddress($email);               // Name is optional
-                
-                
-                $mail->isHTML(true);                                  // Set email format to HTML
-                
-                $mail->Subject = 'Account verification';
-                $mail->Body    = "<a href='/merohostel/backend/acountactivate.php?".$token."'>Click to confirm</a>"; 
-                if(!$mail->send()) {
-                   echo "SERVER ERROR";
-                } else {
+            $mail = new PHPMailer();
+                                       // Enable verbose debug output   
+            $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+            $mail->IsSMTP();
+            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+            $mail->Username = 'baupea1481@gmail.com';                 // SMTP username
+            $mail->Password = 'qtgmaovompetxofh';                           // SMTP password
+            $mail->SMTPSecure = 'tls';                          
+            $mail->Port = 587;                                    // TCP port to connect to
+            $mail->SetFrom("baupea1481@gmail.com", "Mero Hostel");
+            $mail->addAddress($email);               // Name is optional
+            $mail->addAttachment($targetPath);
+            
+            $mail->isHTML(true);                                  // Set email format to HTML
+            
+            $mail->Subject = 'Account verification';
+            $mail->Body    = "Click here to activate your account <br> http://localhost/merohostel/backend/accountactivate.php?token=".$token; 
+            if(!$mail->send()) {
+               echo "SERVER ERROR";
+            } else {
+                $sql = "INSERT INTO `merohostel_users` ( `name`, `email`, `phone`, `dateofbirth`, `address`, `password`, `profilephoto`, `status`, `token` ) VALUES ( '$name', '$email', '$phone', '$dateofbirth', '$address', '$hashpassword', '$profilephoto', 'inactive', '$token');";
+                if ($conn->query($sql) === TRUE) {
+                    move_uploaded_file($sourcePath, $targetPath);
                     echo true;
-                }
-                
-
-                
-              } 
-              else
-               {
-                echo "SERVER ERROR";
-              }
+                  } 
+                  else
+                   {
+                    echo "SERVER ERROR";
+                  }
+            }
+     
           
         }
 

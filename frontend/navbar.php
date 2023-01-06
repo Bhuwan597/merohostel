@@ -116,8 +116,18 @@ select.noStyle {
         <div class="flex3 text-center" id="siteBrand">Mero Hostel
         </div> 
         <div class="flex2 text-end d-none d-md-block">
-          <a href="signup.php" class="whiteLink siteLink">SIGNUP</a>
-          <a href="login.php" class="blackLink siteLink">Login</a>
+        <?php
+          if(isset($_SESSION['email'])){
+            echo'
+            <a  href="logiout.php" class="blackLink siteLink">LOGOUT</a>
+          ';
+          }else{
+            echo'   <a href="signup.php" class="whiteLink siteLink">SIGNUP</a>
+            <a href="login.php" class="blackLink siteLink">Login</a>';
+          }
+
+          ?>
+        
         </div>
       </div>
    </div>
@@ -130,7 +140,17 @@ select.noStyle {
               </div>
             </div>
           </div>
-      <a href="#" class="nav-menu-item"><i class="fas fa-home me-3"></i>Home</a>
+     
+      <?php
+          if(isset($_SESSION['email'])){
+            echo'  <a href="userdashboard.php" class="nav-menu-item"><i class="fas fa-gear me-3"></i>Dashboard</a> <a href="#" class="nav-menu-item"><i class="fas fa-home me-3"></i>Home</a>';
+          }else{
+            echo' <a href="#" class="nav-menu-item"><i class="fas fa-home me-3"></i>Home</a>';
+           
+
+          }
+
+          ?>
 <?php
 $sql = "SELECT * FROM merohostel_navbar";
 $result = mysqli_query($conn, $sql);
@@ -138,10 +158,22 @@ $result = mysqli_query($conn, $sql);
     echo'<a href="'.$row['link'].'" class="nav-menu-item"><i class="'.$row['icon'].'"></i>'.$row['menu'].'</a>';  
    }
   ?>
-  <div class="container-fluid my-2">
-    <a  href="login.php" class="blackLink siteLink">LOGIN</a>
-    <a  href="signup.php" class="whiteLink siteLink">SIGNUP</a>
-  </div>
+
+
+<?php
+          if(isset($_SESSION['email'])){
+            echo'   <div class="container-fluid my-2">
+            <a  href="logiout.php" class="blackLink siteLink">LOGOUT</a>
+          </div>';
+          }else{
+            echo'  <div class="container-fluid my-2">
+            <a  href="login.php" class="blackLink siteLink">LOGIN</a>
+            <a  href="signup.php" class="whiteLink siteLink">SIGNUP</a>
+          </div>';
+          }
+
+          ?>
+
  </div>
   </div>
 <script>
