@@ -116,8 +116,8 @@ select.noStyle {
         <div class="flex3 text-center" id="siteBrand">Mero Hostel
         </div> 
         <div class="flex2 text-end d-none d-md-block">
-          <a class="whiteLink siteLink">REGISTER</a>
-          <a class="blackLink siteLink">Login</a>
+          <a href="signup.php" class="whiteLink siteLink">SIGNUP</a>
+          <a href="login.php" class="blackLink siteLink">Login</a>
         </div>
       </div>
    </div>
@@ -138,9 +138,9 @@ $result = mysqli_query($conn, $sql);
     echo'<a href="'.$row['link'].'" class="nav-menu-item"><i class="'.$row['icon'].'"></i>'.$row['menu'].'</a>';  
    }
   ?>
-  <div class="flex2 text-end d-none d-md-block p-4">
-    <a class="whiteLink siteLink">REGISTER</a>
-    <a class="blackLink siteLink">Login</a>
+  <div class="container-fluid my-2">
+    <a  href="login.php" class="blackLink siteLink">LOGIN</a>
+    <a  href="signup.php" class="whiteLink siteLink">SIGNUP</a>
   </div>
  </div>
   </div>
