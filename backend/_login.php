@@ -10,16 +10,23 @@ $row = mysqli_fetch_assoc($result);
 if ($result->num_rows > 0) {
   if(password_verify($password,$row['password'])){
 if($row['status']=="active"){
-echo true;
-session_start();
-$_SESSION['name']=$row['name'];
-$_SESSION['email']=$row['email'];
-$_SESSION['phone']=$row['phone'];
-$_SESSION['address']=$row['address'];
-$_SESSION['dateofbirth']=$row['dateofbirth'];
-$_SESSION['profilephoto']=$row['profilephoto'];
-$_SESSION['dateofsignup']=$row['dateofsignup'];
-$_SESSION['status']=$row['status'];
+if(isset($_POST['remember'])){
+  echo true;
+  setcookie('phone', $row['phone'], time() + (86400 * 15), "/");
+  setcookie('email', $row['email'], time() + (86400 * 15), "/");
+}else{
+  echo true;
+  session_start();
+  $_SESSION['name']=$row['name'];
+  $_SESSION['email']=$row['email'];
+  $_SESSION['phone']=$row['phone'];
+  $_SESSION['address']=$row['address'];
+  $_SESSION['dateofbirth']=$row['dateofbirth'];
+  $_SESSION['profilephoto']=$row['profilephoto'];
+  $_SESSION['dateofsignup']=$row['dateofsignup'];
+  $_SESSION['status']=$row['status'];
+}
+
 }else{
     echo "You need to confirm your accout to login.";
 }

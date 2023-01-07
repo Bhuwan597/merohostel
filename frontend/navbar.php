@@ -119,7 +119,7 @@ select.noStyle {
         <?php
           if(isset($_SESSION['email'])){
             echo'
-            <a  href="logiout.php" class="blackLink siteLink">LOGOUT</a>
+            <a onclick="logout()" class="blackLink siteLink">LOGOUT</a>
           ';
           }else{
             echo'   <a href="signup.php" class="whiteLink siteLink">SIGNUP</a>
@@ -163,7 +163,7 @@ $result = mysqli_query($conn, $sql);
 <?php
           if(isset($_SESSION['email'])){
             echo'   <div class="container-fluid my-2">
-            <a  href="logiout.php" class="blackLink siteLink">LOGOUT</a>
+            <a onclick="logout()"  class="blackLink siteLink">LOGOUT</a>
           </div>';
           }else{
             echo'  <div class="container-fluid my-2">
@@ -188,4 +188,33 @@ window.onresize = function(){
   if(window.innerWidth < 420) siteBrand.innerHTML = "Mero Hostel"
   else siteBrand.innerHTML = "Mero Hostel"
 
-}</script>
+}
+</script>
+<script>
+  function logout(e){
+    swal({
+  title: "Are you sure?",
+  text: "You want to logout!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    $.ajax({
+      url:"../backend/_logout.php",
+      method:"post",
+      data:{logout:"logout"},
+      success:function(data){
+        swal(data, {
+      icon: "success",
+    });
+      }
+    })
+   
+  } else {
+    swal("Your are not logged out yet.");
+  }
+});
+  }
+</script>

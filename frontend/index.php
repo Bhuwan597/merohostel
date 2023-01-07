@@ -1,5 +1,31 @@
+
+
 <?php require("_links.php"); session_start();?>
 <?php require("../backend/dbconfig.php"); ?>
+<?php
+require("../backend/dbconfig.php");
+if(isset($_COOKIE['email']) && isset($_COOKIE['phone'])){
+    $email= $_COOKIE['email'];
+    $phone= $_COOKIE['phone'];
+    $sql = "SELECT * FROM `merohostel_users` WHERE  `email`='$email' AND `phone`='$phone';";
+    $result = $conn->query($sql);
+    $row = mysqli_fetch_assoc($result);
+    if ($result->num_rows > 0) {
+        $_SESSION['name']=$row['name'];
+        $_SESSION['email']=$row['email'];
+        $_SESSION['phone']=$row['phone'];
+        $_SESSION['address']=$row['address'];
+        $_SESSION['dateofbirth']=$row['dateofbirth'];
+        $_SESSION['profilephoto']=$row['profilephoto'];
+        $_SESSION['dateofsignup']=$row['dateofsignup'];
+        $_SESSION['status']=$row['status'];
+    }
+}else{
+  exit();
+  header("location: login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
