@@ -206,9 +206,11 @@ window.onresize = function(){
       method:"post",
       data:{logout:"logout"},
       success:function(data){
-        swal(data, {
+        swal("You are logged out now.", {
       icon: "success",
-    });
+    }).then((value) => {
+        window.location.assign("/merohostel/frontend/index.php");
+});
       }
     })
    

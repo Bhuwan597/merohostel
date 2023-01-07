@@ -181,8 +181,8 @@ border-color: #f9a826;
     
     
                        <div class="input-group mb-3 mt-4">
-                          <input type="text" class="form-control" placeholder="Enter email" aria-label="Recipient's username" aria-describedby="button-addon2">
-                          <button class="btn btn-success border-rad" type="button" id="button-addon2">Subscribe</button>
+                          <input id="subscribeemail" type="text" class="form-control" placeholder="Enter email" aria-label="Recipient's username" aria-describedby="button-addon2" required>
+                          <button onclick="subscriptions()" class="btn btn-success border-rad" type="button" id="button-addon2" id="subscribebtn">Subscribe</button>
                         </div>
                         
     
@@ -201,3 +201,43 @@ border-color: #f9a826;
     </div>
     <!-- Copyright -->
   </footer>
+  <script>
+   function subscriptions(){
+    let subscribeemail = $("#subscribeemail").val();
+    if(subscribeemail !==""){
+        $.ajax({
+          url: "../backend/subscriptions.php",
+          method:"POST",
+          data:{email:subscribeemail},
+          success: function(data){ 
+           if(data=="1"){
+             $("#subscribeemail").val('');
+              swal({
+                        title: "Subscribed!",
+                        text: "Your email is subscribed to mero hostel.",
+                        icon: "success",
+                        button: "Okay",
+                    })
+            }else{
+              $("#subscribeemail").val('');
+              swal({
+                        title: "Error!",
+                        text: data,
+                        icon: "error",
+                        button: "Okay",
+                    })
+            }
+         
+          }
+        })
+    }else{
+      swal({
+                        title: "Error!",
+                        text: "Invalid Email",
+                        icon: "error",
+                        button: "Okay",
+                    })
+                    $("#subscribeemail").val('');
+    }
+   }
+  </script>

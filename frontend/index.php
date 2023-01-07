@@ -20,9 +20,6 @@ if(isset($_COOKIE['email']) && isset($_COOKIE['phone'])){
         $_SESSION['dateofsignup']=$row['dateofsignup'];
         $_SESSION['status']=$row['status'];
     }
-}else{
-  exit();
-  header("location: login.php");
 }
 ?>
 

@@ -54,30 +54,50 @@
         <div class="col-lg-6">
           <div class="contact-box ml-3">
             <h1 class="font-weight-light mt-2">Send Us a Message</h1>
-            <form class="mt-4">
+            <form id="contactus" class="mt-4">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group mt-2">
-                    <input class="form-control" type="text" placeholder="name">
+                    <?php if(isset($_SESSION['email'])){
+                      echo'<input id="name" name="name" class="form-control" value="'.$_SESSION['name'].'" type="text" placeholder="name" readonly>';
+                    }else{
+                      echo'  <input id="name" name="name" class="form-control" value="" type="text" placeholder="Name">';
+                    }
+                    ?>
+                  
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mt-2">
-                    <input class="form-control" type="email" placeholder="email address">
+                  <?php if(isset($_SESSION['email'])){
+                      echo'<input id="email" name="email" class="form-control" value="'.$_SESSION['email'].'" type="email" placeholder="Email address" readonly>';
+                    }else{
+                      echo'<input id="email" name="email" class="form-control" value="" type="email" placeholder="email address">';
+                    }
+                    ?>
+
+    
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mt-2">
-                    <input class="form-control" type="text" placeholder="phone">
+
+                  <?php if(isset($_SESSION['email'])){
+                      echo'    <input id="phone" name="phone" class="form-control" value="'.$_SESSION['phone'].'" type="number" placeholder="phone" readonly>';
+                    }else{
+                      echo'  <input id="phone" name="phone" class="form-control" value="" type="number" placeholder="phone">';
+                    }
+                    ?>
+                  
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mt-2">
-                    <textarea class="form-control" rows="3" placeholder="message"></textarea>
+                    <textarea id="message" name="message" class="form-control" rows="3" placeholder="Message"></textarea>
                   </div>
                 </div>
                 <div class="col-lg-12">
-                  <button type="submit" class="btn btn-danger-gradiant mt-3 text-white border-0 px-3 py-2"><span> SUBMIT</span></button>
+                  <button type="submit"  class="btn btn-danger-gradiant mt-3 text-white border-0 px-3 py-2"><span> SUBMIT</span></button>
                 </div>
               </div>
             </form>
@@ -131,3 +151,39 @@
     </div>
   </div>
 </div>
+
+<script>
+  $("#contactus").submit(function(e){
+    e.preventDefault();
+    var form = $('#contactus')[0];
+    $.ajax({
+      url:"../backend/contactus.php",
+      method:"POST",
+      enctype: "multipart/form-data",
+      processData: false,
+        contentType: false,
+      data: new FormData(form),
+      success: function(data){
+        if(data =="1"){
+            swal({
+  title: "Message Sent!",
+  text: "We will reach up to you soon.",
+  icon: "success",
+  button: "Okay",
+}).then(()=>{
+        $("#contactus").trigger("reset");
+    });
+        }else{
+            swal({
+  title: "Error!",
+  text: data,
+  icon: "error",
+  button: "Okay",
+}).then(()=>{
+  $("#contactus").trigger("reset");
+    });
+        }
+      }
+    })
+  })
+</script>
