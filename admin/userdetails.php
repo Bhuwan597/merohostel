@@ -44,6 +44,44 @@ if(!isset($_SESSION['adminlogin'])){
 </div>
 <script>
    $(document).on("click", "#deleteadmission", function(e) {
-        alert($("#deleteadmission").data("sn"));
+    swal({
+            title: "Are you sure?",
+            text: "You want to delete this admission form!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+
+                let sn = $(this).data("sn");
+                $.ajax({
+                    url: "_deleteadmission.php",
+                    method: "POST",
+                    data: {
+                        sn:sn
+                    },
+                    success: function(data) {
+                        if (data == "1") {
+                            swal("Success! Form Deleted Successfully!", {
+                                icon: "success",
+                            }).then(() => {
+                                window.location.assign(
+                                    "/merohostel/admin/userdetails.php");
+                            })
+                        } else {
+                            swal("Error!", {
+                                icon: "error",
+                                text: "Please try again."
+                            })
+                        }
+
+                    }
+                })
+            } else {
+                swal("Process Cancelled By Admin");
+            }
+        });
+        
     })
 </script>
