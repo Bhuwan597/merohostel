@@ -163,21 +163,22 @@ body {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="replycontactus" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="replyname" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="replyname" aria-describedby="emailHelp" required readonly>
+                        <input name="replyname" type="text" class="form-control" id="replyname" aria-describedby="emailHelp" required readonly>
                     </div>
                     <div class="mb-3">
                         <label for="replyemail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="replyemail" aria-describedby="emailHelp" required readonly>
+                        <input name="replyemail" type="email" class="form-control" id="replyemail" aria-describedby="emailHelp" required readonly>
                     </div>
                     <div class="mb-3">
                         <label for="replymessage" class="form-label"></label>
-                        <textarea rows="10" type="text" class="form-control" id="replymessage" aria-describedby="emailHelp" required placeholder="Your Reply Message"></textarea>
+                        <textarea name="replymessage" rows="10" type="text" class="form-control" id="replymessage" aria-describedby="emailHelp" required placeholder="Your Reply Message"></textarea>
                     </div>
-                   
-                    <button type="submit" class="btn btn-primary">Send Mail</button>
+                    <button type="submit" class="btn btn-primary"><div id="spinner" class="spinner-border spinner-border-sm me-4 d-none" role="status">
+                        <span class="visually-hidden"></span>
+                      </div>Send Mail</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -202,4 +203,40 @@ body {
 
       })
     })
+</script>
+<script>
+$("#replycontactus").submit(function(e){
+    $("#spinner").removeClass("d-none");
+    e.preventDefault();
+    $.ajax({
+        url:"_replytocontactus.php",
+        method:"POST",
+        processData:false,
+        cache:false,
+        contentType:false,
+        data: new FormData(this),
+        success: function(data){
+            $("#spinner").addClass("d-none");
+     if(data=="1"){
+        swal({
+  title: "Email Sent!",
+  text: "Your message has been sent.",
+  icon: "success",
+  button: "Okay",
+}).then(()=>{
+        $("#replycontactus").trigger("reset");
+    });
+     }else{
+        swal({
+  title: "Error!",
+  text: data,
+  icon: "error",
+  button: "Okay",
+    });
+    $("#replycontactus").trigger("reset");
+
+     }
+        }
+    })
+})
 </script>

@@ -33,6 +33,12 @@ if(!isset($_SESSION['adminlogin'])){
         <a href="editgallery.php" class="list-group-item">Gallery</a>
         <a href="editmerohostelteam.php" class="list-group-item">Team</a>
     </div>
+    <div class="list-group p-4">
+        <a href="#" class="list-group-item active">
+            Backend Management
+        </a>
+        <a href="contactusmessages.php" class="list-group-item">Contact Us Messages</a>
+    </div>
 </body>
 <script>
 function logout() {
