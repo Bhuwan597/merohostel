@@ -195,7 +195,7 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['phone']) && 
                         <!-- COPY -->
                         <tr>
                           <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 0px 30px; color: #666666; font-family: "Lato", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;">If that doesn"t work, copy and paste the following link in your browser:</p>
+                            <p style="margin: 0;">If that doesn"t work, copy and paste the following link in your browser:</p><br><br>
                           </td>
                         </tr>
                         <!-- COPY -->
@@ -206,7 +206,7 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['phone']) && 
                         </tr>
                         <tr>
                           <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 20px 30px; color: #666666; font-family: "Lato", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;">If you have any questions, just reply to this email&mdash;we"re always happy to help out.</p>
+                            <p style="margin: 0;">If you have any questions, just reply to this email&mdash;we"re always happy to help out.</p><br><br>
                           </td>
                         </tr>
                         <tr>

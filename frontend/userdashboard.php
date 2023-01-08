@@ -32,13 +32,33 @@ if(isset($_SESSION['email']) && isset($_SESSION['phone'])){
 </head>
 
 <body>
-    <div style="max-width:100vw;" class="container bg-dark d-flex justify-content-between w-100 p-4">
-        <div class="container w-25"></div>
-        <h2 class='text-light mx-4'>Hello,
-            <?php if(isset($_SESSION['name'])){ echo $_SESSION['name'];}else{echo "USER";}?></h2>
-            <img style="width:65px; height:60px; margin-right:10px; border-radius:90px; border:2px solid white;" src="../images/<?php echo $_SESSION['profilephoto']; ?>" alt="">
-        <button onclick="logout()" class='btn btn-outline-primary'>Logout</button>
-    </div>
+   <!-- Navbar -->
+   <nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+     Mero Hostel 
+    </a>
+    <?php
+     $email= $_SESSION['email'];
+     $phone= $_SESSION['phone'];
+    $sql = "SELECT * FROM `merohostel_users` WHERE `email`='$email' AND `phone`='$phone';";
+    $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_assoc($result);
+    if($row){
+      echo ' <h3>Hello, '.$row['name'].'</h3>
+      <div>
+      <img style="width:70px; height:60px; border-radius:60px;" src="../images/'.$row['profilephoto'].'" alt="">';
+    }
+    ?>
+   
+<button class="btn btn-outline-primary mx-4" onclick="logout()">Logout</button>
+<a href="message.php"><i class="fa fa-bell h3 me-4 text-danger" style="cursor:pointer;"></i></a>
+ </div>
+   
+
+   </div>
+</nav>
+<!-- Navbar -->
     <div class="list-group p-4">
         <a href="#" class="list-group-item active">
             Dashboard Menus
@@ -46,7 +66,7 @@ if(isset($_SESSION['email']) && isset($_SESSION['phone'])){
         <a  href="userinfo.php" class="list-group-item">Your Info</a>
         <a  href="admissions.php" class="list-group-item">Your Hostel Admissions</a>
         <a  href="changepassword.php" class="list-group-item">Change Password</a>
-        <a  href="notifications.php" class="list-group-item">Notifications</a>
+        <a  href="message.php" class="list-group-item">Message From Mero Hostel</a>
     </div>
 </body>
 <script>

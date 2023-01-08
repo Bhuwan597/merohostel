@@ -14,6 +14,8 @@ if(isset($_POST['sn'])){
     $row= mysqli_fetch_assoc($result);
     $name= $row['name'];
     $email= $row['email'];
+    $profilephoto= $row['profilephoto'];
+    unlink("../images/".$profilephoto);
     $sql = "DELETE FROM `merohostel_users` WHERE `sn`='$sn'";
     if(mysqli_query($conn,$sql) == "1"){
         
