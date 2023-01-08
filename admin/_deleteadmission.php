@@ -7,11 +7,15 @@ if(!isset($_SESSION['adminlogin'])){
 ?>
 <?php
 require("../backend/dbconfig.php");
+$email = $_SESSION['email'];
 if( isset($_POST['sn'])){
     $sn = mysqli_real_escape_string($conn,$_POST['sn']);
-    $sql = "DELETE FROM `merohostel_admissions` WHERE `merohostel_admissions`.`sn` = '$sn';";
+    $sql = "UPDATE `merohostel_admissions` SET `merohostel_admissions`.`status`='expired' WHERE `sn`='$sn'";
     if(mysqli_query($conn,$sql) == "1"){
-    echo true;
+        $sql = "UPDATE `merohostel_users` SET `merohostel_users`.`admitted`='no' WHERE `email` ='$email'; ";
+        if(mysqli_query($conn,$sql)){
+            echo true;
+        }
     }else{
         echo false;
     }

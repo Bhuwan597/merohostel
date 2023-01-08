@@ -10,7 +10,7 @@ if(isset($_COOKIE['email']) && isset($_COOKIE['phone'])){
     $sql = "SELECT * FROM `merohostel_users` WHERE  `email`='$email' AND `phone`='$phone';";
     $result = $conn->query($sql);
     $row = mysqli_fetch_assoc($result);
-    if ($result->num_rows > 0) {
+    if (mysqli_num_rows($result) > 0) {
         $_SESSION['name']=$row['name'];
         $_SESSION['email']=$row['email'];
         $_SESSION['phone']=$row['phone'];
@@ -21,6 +21,22 @@ if(isset($_COOKIE['email']) && isset($_COOKIE['phone'])){
         $_SESSION['status']=$row['status'];
     }
 }
+
+?>
+<?php
+if(isset($_SESSION['email']) && isset($_SESSION['phone'])){
+    $email= $_SESSION['email'];
+    $phone= $_SESSION['phone'];
+    $sql = "SELECT * FROM `merohostel_users` WHERE  `email`='$email' AND `phone`='$phone';";
+    $result = $conn->query($sql);
+    if (mysqli_num_rows($result) ===0) {
+        session_destroy();
+        session_unset();
+        setcookie('phone',"", time() - 3600 ,'/');
+        setcookie('email',"", time() - 3600 ,'/');
+    }
+}
+
 ?>
 
 <!DOCTYPE html>

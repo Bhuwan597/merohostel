@@ -6,6 +6,21 @@ if(!isset($_SESSION['email']) && !isset($_SESSION['phone'])){
     exit();
 }
 ?>
+<?php
+if(isset($_SESSION['email']) && isset($_SESSION['phone'])){
+    $email= $_SESSION['email'];
+    $phone= $_SESSION['phone'];
+    $sql = "SELECT * FROM `merohostel_users` WHERE  `email`='$email' AND `phone`='$phone';";
+    $result = $conn->query($sql);
+    if (mysqli_num_rows($result) ===0) {
+        session_destroy();
+        session_unset();
+        setcookie('phone',"", time() - 3600 ,'/');
+        setcookie('email',"", time() - 3600 ,'/');
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,10 +43,10 @@ if(!isset($_SESSION['email']) && !isset($_SESSION['phone'])){
         <a href="#" class="list-group-item active">
             Dashboard Menus
         </a>
-        <a target="_main" href="userinfo.php" class="list-group-item">Your Info</a>
-        <a target="_main" href="admissions.php" class="list-group-item">Your Hostel Admissions</a>
-        <a target="_main" href="changepassword.php" class="list-group-item">Change Password</a>
-        <a target="_main" href="notifications.php" class="list-group-item">Notifications</a>
+        <a  href="userinfo.php" class="list-group-item">Your Info</a>
+        <a  href="admissions.php" class="list-group-item">Your Hostel Admissions</a>
+        <a  href="changepassword.php" class="list-group-item">Change Password</a>
+        <a  href="notifications.php" class="list-group-item">Notifications</a>
     </div>
 </body>
 <script>

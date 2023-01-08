@@ -1,14 +1,7 @@
-<?php
-session_start();
-if(!isset($_SESSION['adminlogin'])){
-    header("location: adminlogin.php");
-    exit();
-}
-?>
 <?php require("../backend/dbconfig.php"); ?>
 <?php
 if(!isset($_GET['email']) && !isset($_GET['token'])){
-    header("location: adminlogin.php");
+    header("location: index.php");
     exit();
 }else{
     $email = $_GET['email'];
@@ -34,7 +27,7 @@ if(!isset($_GET['email']) && !isset($_GET['token'])){
         $mail->isHTML(true);                                  // Set email format to HTML
         
         $mail->Subject = 'Admission Activation';
-        $mail->Body    = "<h1>Your admission has been approved.</h1>";
+        $mail->Body    = "<h1>Your admission has been approved for $email.</h1>";
         if(!$mail->send()) {
            echo "Admission Not Approved";
     
@@ -44,7 +37,7 @@ if(!isset($_GET['email']) && !isset($_GET['token'])){
                 echo "Booking for  ".$email."  is now approved";
         }
     }else{
-            echo"Faile to conirm Admission.";
+            echo"Failed to conirm Admission.";
     }
   }else{
     echo "Invalid Process";

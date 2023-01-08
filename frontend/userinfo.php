@@ -6,6 +6,21 @@ if(!isset($_SESSION['email']) && !isset($_SESSION['phone'])){
     exit();
 }
 ?>
+<?php
+if(isset($_SESSION['email']) && isset($_SESSION['phone'])){
+    $email= $_SESSION['email'];
+    $phone= $_SESSION['phone'];
+    $sql = "SELECT * FROM `merohostel_users` WHERE  `email`='$email' AND `phone`='$phone';";
+    $result = $conn->query($sql);
+    if (mysqli_num_rows($result) ===0) {
+        session_destroy();
+        session_unset();
+        setcookie('phone',"", time() - 3600 ,'/');
+        setcookie('email',"", time() - 3600 ,'/');
+    }
+}
+
+?>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>

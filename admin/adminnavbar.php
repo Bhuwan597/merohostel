@@ -7,14 +7,12 @@ if(!isset($_SESSION['adminlogin'])){
 <?php require("../frontend/_links.php");?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
 </head>
-
 <body>
     <div style="max-width:100vw;" class="container bg-dark d-flex justify-content-between w-100 p-4">
         <div class="container w-25"></div>
@@ -38,6 +36,8 @@ if(!isset($_SESSION['adminlogin'])){
             Backend Management
         </a>
         <a href="contactusmessages.php" class="list-group-item">Contact Us Messages</a>
+        <a href="handleadmissions.php" class="list-group-item">Admissions</a>
+        <a href="userdetails.php" class="list-group-item">User Details</a>
     </div>
 </body>
 <script>

@@ -146,8 +146,6 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['phone']) && 
               </head>
             
               <body style="background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;">
-                <!-- HIDDEN PREHEADER TEXT -->
-                <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: "Lato", Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">We"re thrilled to have you here! Get ready to dive into your new account.</div>
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                   <!-- LOGO -->
                   <tr>
@@ -203,7 +201,7 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['phone']) && 
                         <!-- COPY -->
                         <tr>
                           <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: "Lato", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;"><a href="#" target="_blank" style="color: #FFA73B;">http://localhost/merohostel/backend/accountactivate.php?token='.$token.'</a></p>
+                            <p style="margin: 0;"><a href="#" target="_main" style="color: #FFA73B;">http://localhost/merohostel/backend/accountactivate.php?token='.$token.'&email='.$email.'</a></p>
                           </td>
                         </tr>
                         <tr>
@@ -237,7 +235,7 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['phone']) && 
                 </table>
               </body>
             </html>
-            '
+            ';
             if(!$mail->send()) {
                echo "SERVER ERROR";
             } else {

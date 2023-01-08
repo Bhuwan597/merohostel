@@ -120,6 +120,7 @@ body {
 }
 </style>
 <div class="container">
+    <button id="deletecontactusmessages" class="btn btn-danger">Delete All Messages </button>
     <div class="row">
         <?php
  $sql = "SELECT * FROM `merohostel_contactus` ORDER BY sn DESC;";
@@ -166,19 +167,24 @@ body {
                 <form id="replycontactus" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="replyname" class="form-label">Name</label>
-                        <input name="replyname" type="text" class="form-control" id="replyname" aria-describedby="emailHelp" required readonly>
+                        <input name="replyname" type="text" class="form-control" id="replyname"
+                            aria-describedby="emailHelp" required readonly>
                     </div>
                     <div class="mb-3">
                         <label for="replyemail" class="form-label">Email</label>
-                        <input name="replyemail" type="email" class="form-control" id="replyemail" aria-describedby="emailHelp" required readonly>
+                        <input name="replyemail" type="email" class="form-control" id="replyemail"
+                            aria-describedby="emailHelp" required readonly>
                     </div>
                     <div class="mb-3">
                         <label for="replymessage" class="form-label"></label>
-                        <textarea name="replymessage" rows="10" type="text" class="form-control" id="replymessage" aria-describedby="emailHelp" required placeholder="Your Reply Message"></textarea>
+                        <textarea name="replymessage" rows="10" type="text" class="form-control" id="replymessage"
+                            aria-describedby="emailHelp" required placeholder="Your Reply Message"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary"><div id="spinner" class="spinner-border spinner-border-sm me-4 d-none" role="status">
-                        <span class="visually-hidden"></span>
-                      </div>Send Mail</button>
+                    <button type="submit" class="btn btn-primary">
+                        <div id="spinner" class="spinner-border spinner-border-sm me-4 d-none" role="status">
+                            <span class="visually-hidden"></span>
+                        </div>Send Mail
+                    </button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -188,55 +194,105 @@ body {
     </div>
 </div>
 <script>
- reply = document.getElementsByClassName('reply');
-    Array.from(reply).forEach((elements) => {
-      elements.addEventListener("click", (e) => {
+reply = document.getElementsByClassName('reply');
+Array.from(reply).forEach((elements) => {
+    elements.addEventListener("click", (e) => {
         let div = e.target.parentNode.parentNode;
         details = div.getElementsByTagName("div")[1].innerHTML;
         fullname = div.getElementsByTagName("h6")[0].innerText;
         email = div.getElementsByTagName("h6")[1].innerText;
         phone = div.getElementsByTagName("h6")[2].innerText;
         message = div.getElementsByTagName("p")[0].innerText;
-        replyname.value= fullname;
+        replyname.value = fullname;
         replyemail.value = email;
         $("#replyModal").modal('toggle');
 
-      })
     })
+})
 </script>
 <script>
-$("#replycontactus").submit(function(e){
+$("#replycontactus").submit(function(e) {
     $("#spinner").removeClass("d-none");
     e.preventDefault();
     $.ajax({
-        url:"_replytocontactus.php",
-        method:"POST",
-        processData:false,
-        cache:false,
-        contentType:false,
+        url: "_replytocontactus.php",
+        method: "POST",
+        processData: false,
+        cache: false,
+        contentType: false,
         data: new FormData(this),
-        success: function(data){
+        success: function(data) {
             $("#spinner").addClass("d-none");
-     if(data=="1"){
-        swal({
-  title: "Email Sent!",
-  text: "Your message has been sent.",
-  icon: "success",
-  button: "Okay",
-}).then(()=>{
-        $("#replycontactus").trigger("reset");
-    });
-     }else{
-        swal({
-  title: "Error!",
-  text: data,
-  icon: "error",
-  button: "Okay",
-    });
-    $("#replycontactus").trigger("reset");
+            if (data == "1") {
+                swal({
+                    title: "Email Sent!",
+                    text: "Your message has been sent.",
+                    icon: "success",
+                    button: "Okay",
+                }).then(() => {
+                    $("#replycontactus").trigger("reset");
+                });
+            } else {
+                swal({
+                    title: "Error!",
+                    text: data,
+                    icon: "error",
+                    button: "Okay",
+                });
+                $("#replycontactus").trigger("reset");
 
-     }
+            }
         }
     })
+})
+</script>
+<script>
+$("#deletecontactusmessages").on('click', function(e) {
+    e.preventDefault();
+   
+
+    swal({
+            title: "Are you sure?",
+            text: "You want to delete entire messages!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                message="delete";
+    $.ajax({
+        url: "_deletecontactusmessages.php",
+        method: "POST",
+        data: {
+            delete: message
+        },
+        success: function(data) {
+            if (data == "1") {
+                swal({
+                    title: "Success!",
+                    text: 'All messages deleted.',
+                    icon: "success",
+                    button: "Okay",
+                }).then(() => {
+                    window.location.assign("/merohostel/admin/contactusmessages.php");
+                });
+            } else {
+                swal({
+                    title: "Error!",
+                    text: data,
+                    icon: "error",
+                    button: "Okay",
+                });
+            }
+        }
+    })
+
+
+
+            } else {
+                swal("Process Cancelled By Admin");
+            }
+        });
 })
 </script>

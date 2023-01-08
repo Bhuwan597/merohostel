@@ -6,6 +6,21 @@ if(!isset($_SESSION['email']) && !isset($_SESSION['phone'])){
     exit();
 }
 ?>
+<?php
+if(isset($_SESSION['email']) && isset($_SESSION['phone'])){
+    $email= $_SESSION['email'];
+    $phone= $_SESSION['phone'];
+    $sql = "SELECT * FROM `merohostel_users` WHERE  `email`='$email' AND `phone`='$phone';";
+    $result = $conn->query($sql);
+    if (mysqli_num_rows($result) ===0) {
+        session_destroy();
+        session_unset();
+        setcookie('phone',"", time() - 3600 ,'/');
+        setcookie('email',"", time() - 3600 ,'/');
+    }
+}
+
+?>
 <div class="container m-4">
     <h1 class="h1">Your Admissions</h1>
     <?php
@@ -78,7 +93,7 @@ $("#admissionform").submit(function(e) {
         processData: false,
         data: new FormData(this),
         success: function(data) {
-            $("#spinner").removeClass("d-none");
+            $("#spinner").addClass("d-none");
             if (data == "1") {
                 swal({
                     title: "Done!",
